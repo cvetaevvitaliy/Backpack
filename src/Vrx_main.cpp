@@ -40,6 +40,8 @@
   #include "orqa.h"
 #elif defined(AAT_BACKPACK)
   #include "module_aat.h"
+#elif defined(STINGBEE_BACKPACK)
+  #include "stingbee_VRX.h"
 #endif
 
 /////////// DEFINES ///////////
@@ -116,6 +118,8 @@ VrxBackpackConfig config;
   Orqa vrxModule;
 #elif defined(AAT_BACKPACK)
   AatModule vrxModule(Serial);
+#elif defined(STINGBEE_BACKPACK)
+  StingBee vrxModule;
 #endif
 
 /////////// FUNCTION DEFS ///////////
@@ -144,6 +148,12 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *data, int data_len)
 #endif
 {
   DBGVLN("ESP NOW DATA:");
+
+#ifdef STINGBEE_BACKPACK
+  // Send the raw MSP packet to the StingBee module
+  vrxModule.SendRawMsp(data, data_len);
+#endif
+
   for(int i = 0; i < data_len; i++)
   {
     DBGV("%x,", data[i]); // Debug prints

@@ -484,5 +484,16 @@
                 "platform": "esp32"
             }
         }
+    },
+    "stingbee": {
+        "name": "Stingbee VRX",
+        "vrx": {
+            "rx": {
+                "product_name": "Stingbee Backpack",
+                "firmware": "Stingbee_ESP_RX_Backpack",
+                "upload_methods": ["uart", "wifi"],
+                "platform": "esp8285"
+            }
+        }
     }
 }
