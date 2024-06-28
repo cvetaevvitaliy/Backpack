@@ -9,7 +9,8 @@ GENERIC_CRC8 crsf_crc(CRSF_CRC_POLY);
 void StingBee::Init()
 {
     ModuleBase::Init();
-    DBGLN("Fusion backpack init complete");
+    m_delay = 0;
+    DBGLN("Stingbee backpack init complete");
 }
 
 void StingBee::SendIndexCmd(uint8_t index)
@@ -42,4 +43,9 @@ void StingBee::SendRawMsp(uint8_t *rawMspPacket, uint8_t len)
             Serial.write(rawMspPacket[i]);
         }
     }    
+}
+
+void StingBee::Loop(uint32_t now)
+{
+    MSPModuleBase::Loop(now);
 }

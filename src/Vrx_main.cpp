@@ -119,7 +119,7 @@ VrxBackpackConfig config;
 #elif defined(AAT_BACKPACK)
   AatModule vrxModule(Serial);
 #elif defined(STINGBEE_BACKPACK)
-  StingBee vrxModule;
+  StingBee vrxModule(&Serial);
 #endif
 
 /////////// FUNCTION DEFS ///////////
